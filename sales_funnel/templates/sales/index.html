@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block title %}Tasks{% endblock %}
 
-<body>
-    <h1>This is main page</h1>
-</body>
-
-</html>
+{% block content %}
+<h1>Tasks</h1>
+<ul>
+    {% for task in tasks_list %}
+    <li>
+        <a href="{{ task.get_url }}">{{ task }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
