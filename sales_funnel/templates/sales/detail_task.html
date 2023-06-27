@@ -3,10 +3,17 @@
 {% block title %}Detail task{% endblock %}
 
 {% block content %}
-<h1>Detail task</h1>
 
-<h3>{{ task.title }}</h3>
-<p>{{ task.text }}</p>
-<p>{{ task.status }}</p>
+<div class="container">
+    <div>
+        <a href="{% url 'index' %}">back</a>
+    </div>
+
+    <h1>Detail task</h1>
+
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.text }}</p>
+    <p>{{ task.status }}</p>
+</div>
 
 {% endblock %}
