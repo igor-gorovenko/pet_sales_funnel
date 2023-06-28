@@ -16,3 +16,11 @@ def task(request, id_task):
         'task': task,
     }
     return render(request, 'sales/detail_task.html', context)
+
+
+def create_new_task(request):
+    new_task = 'test'
+    context = {
+        'new_task': new_task,
+    }
+    return render(request, 'sales/create_task.html', context)

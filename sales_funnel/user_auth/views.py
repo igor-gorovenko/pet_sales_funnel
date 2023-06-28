@@ -34,7 +34,7 @@ def sign_in(request):
 def sign_out(request):
     logout(request)
     messages.success(request, f'You have been logged out.')
-    return redirect('login')  
+    return redirect('index')  
 
 
 def sign_up(request):
