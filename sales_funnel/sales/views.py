@@ -10,8 +10,8 @@ def index(request):
     return render(request, 'sales/index.html', context)
 
 
-def task(request, id_task):
-    task = get_object_or_404(Task, id=id_task)
+def task(request, id):
+    task = get_object_or_404(Task, pk=id)
     context = {
         'task': task,
     }
