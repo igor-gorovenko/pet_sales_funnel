@@ -1,5 +1,23 @@
-<div class="bg-light">
-    <div class="container p-2">
-        <p><a href="{% url 'index' %}">LogoType</a></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">Sales</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Create new</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">All</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-text">
+            <a href="#">Login</a>
+            <a href="#">Sign up</a>
+        </div>
     </div>
-</div>
+</nav>
