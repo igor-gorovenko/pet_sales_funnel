@@ -1,5 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Task
+from .forms import CreateTaskForm
 
 
 def index(request):
@@ -19,8 +21,13 @@ def task(request, id):
 
 
 def create_new_task(request):
-    new_task = 'test'
-    context = {
-        'new_task': new_task,
-    }
-    return render(request, 'sales/create_task.html', context)
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        text = request.POST.get('text')
+        return HttpResponse(f"Заголовок {title} описание {text}")
+    else:
+        create_form = CreateTaskForm()
+        context = {
+            'create_form': create_form,
+        }
+        return render(request, 'sales/create_task.html', context)
