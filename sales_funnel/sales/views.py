@@ -12,7 +12,7 @@ def index(request):
     return render(request, 'sales/index.html', context)
 
 
-def task(request, id):
+def get_task(request, id):
     task = get_object_or_404(Task, pk=id)
     context = {
         'task': task,
@@ -20,18 +20,22 @@ def task(request, id):
     return render(request, 'sales/detail_task.html', context)
 
 
-def create_new_task(request):
+def add_task(request):
     if request.method == 'POST':
         new_task = Task()
         new_task.title = request.POST.get('title')
         new_task.text = request.POST.get('text')
-        new_task.status = Status(id=1)
-        new_task.user = User(id=1)
+        new_task.status = Status(1)
+        new_task.user = User(2)
         new_task.save()
         return HttpResponseRedirect("/")
     else:
-        create_form = CreateTaskForm()
+        add_task = CreateTaskForm()
         context = {
-            'create_form': create_form,
+            'add_task': add_task,
         }
-        return render(request, 'sales/create_task.html', context)
+        return render(request, 'sales/add_task.html', context)
+    
+
+def edit_task(request, id):
+    pass
