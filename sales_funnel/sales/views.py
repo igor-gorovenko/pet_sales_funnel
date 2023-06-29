@@ -1,6 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from .models import Task
+from .models import Task, User, Status
 from .forms import CreateTaskForm
 
 
@@ -22,9 +22,13 @@ def task(request, id):
 
 def create_new_task(request):
     if request.method == 'POST':
-        title = request.POST.get('title')
-        text = request.POST.get('text')
-        return HttpResponse(f"Заголовок {title} описание {text}")
+        new_task = Task()
+        new_task.title = request.POST.get('title')
+        new_task.text = request.POST.get('text')
+        new_task.status = Status(id=1)
+        new_task.user = User(id=1)
+        new_task.save()
+        return HttpResponseRedirect("/")
     else:
         create_form = CreateTaskForm()
         context = {
