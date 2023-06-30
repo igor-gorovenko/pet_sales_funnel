@@ -4,9 +4,9 @@
         <p>{{ task.status }}</p>
         <p class="card-text">{{ task.text }}</p>
         <div>
-            <a href=" {{ task.get_url }}">view</a>
-            <a href="#">edit</a>
-            <a href="#">delete</a>
+            <a href="{{ task.get_url }}">view</a>
+            <a href="{% url 'edit_task' task.id %}">edit</a>
+            <a href="{% url 'delete_task' task.id %}">delete</a>
         </div>
     </div>
 </div>

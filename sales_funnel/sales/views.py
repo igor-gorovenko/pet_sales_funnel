@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from .models import Task, User, Status
 from .forms import CreateTaskForm
@@ -45,4 +45,25 @@ def add_task(request):
     
 
 def edit_task(request, id):
-    pass
+    try:
+        task = Task.objects.get(id=id)
+
+        if request.method == "POST":
+            task.title = request.POST.get("title")
+            task.text = request.POST.get('text')
+            task.save()
+            return HttpResponseRedirect("/")
+        else:
+            edit_task = CreateTaskForm()
+            return render(request, "sales/edit_task.html", {"edit_task": edit_task})
+    except Task.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")
+    
+
+def delete_task(request, id):
+    try:
+        task = Task.objects.get(id=id)
+        task.delete()
+        return HttpResponseRedirect("/")
+    except Task.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")
