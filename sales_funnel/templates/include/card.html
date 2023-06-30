@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p>{{ task.status }}</p>
+        <p class="card-text">{{ task.text }}</p>
+        <div>
+            <a href=" {{ task.get_url }}">view</a>
+            <a href="#">edit</a>
+            <a href="#">delete</a>
+        </div>
+    </div>
+</div>

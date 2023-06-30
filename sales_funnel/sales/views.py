@@ -8,8 +8,14 @@ DEFAULT_STATUS_ID = 1
 
 def index(request):
     tasks_list = Task.objects.all()
+    status_new = Task.objects.filter(status_id=1)
+    status_open = Task.objects.filter(status_id=2)
+    status_close = Task.objects.filter(status_id=3)
     context = {
         'tasks_list': tasks_list,
+        'status_new': status_new,
+        'status_open': status_open,
+        'status_close': status_close,
     }
     return render(request, 'sales/index.html', context)
 

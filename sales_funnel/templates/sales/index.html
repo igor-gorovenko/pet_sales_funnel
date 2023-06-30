@@ -4,15 +4,48 @@
 
 {% block content %}
 <div class='container p-3'>
-    <h1>Tasks</h1>
-    <ul>
-        {% for task in tasks_list %}
-        <li>
-            <a href="{{ task.get_url }}">{{ task }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'add_task' %}">create new task</a>
+    <h1>All Tasks</h1>
+    <div class="row">
+        <div class="col-4 bg-light">
+            <p>NEW</p>
+            <div>
+                {% if status_new %}
+                {% for task in status_new %}
+
+                {% include 'include/card.html' %}
+
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-4 bg-light">
+            <p>OPEN</p>
+            <div>
+                {% if status_open %}
+                {% for task in status_open %}
+
+                {% include 'include/card.html' %}
+
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-4 bg-light">
+            <p>CLOSE</p>
+            <div>
+                {% if status_close %}
+                {% for task in status_close %}
+
+                {% include 'include/card.html' %}
+
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
 
 {% endblock %}
