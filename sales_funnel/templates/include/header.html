@@ -7,16 +7,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Create new</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">All</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">All</a>
+                    <a class="nav-link" href="{% url 'add_task' %}">Create new</a>
                 </li>
             </ul>
         </div>
-
-
         <div class="navbar-text">
             {% if request.user.is_authenticated %}
             <span>Hi, {{ request.user.username }}</span>

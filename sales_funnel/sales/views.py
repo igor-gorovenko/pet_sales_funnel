@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Task, User, Status
 from .forms import CreateTaskForm
 
+DEFAULT_STATUS_ID = 1
+
 
 def index(request):
     tasks_list = Task.objects.all()
@@ -25,8 +27,7 @@ def add_task(request):
         new_task = Task()
         new_task.title = request.POST.get('title')
         new_task.text = request.POST.get('text')
-        new_task.status = Status(1)
-        new_task.user = User(2)
+        new_task.status = Status(id=DEFAULT_STATUS_ID)
         new_task.save()
         return HttpResponseRedirect("/")
     else:
