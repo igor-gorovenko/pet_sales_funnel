@@ -5,7 +5,6 @@ from .forms import CreateTaskForm
 
 DEFAULT_STATUS_ID = 1
 
-
 def index(request):
     tasks_list = Task.objects.all()
     status_new = Task.objects.filter(status_id=1)
@@ -34,6 +33,7 @@ def add_task(request):
         new_task.title = request.POST.get('title')
         new_task.text = request.POST.get('text')
         new_task.status = Status(id=DEFAULT_STATUS_ID)
+        new_task.user = User(id=request.user.id)
         new_task.save()
         return HttpResponseRedirect("/")
     else:
@@ -57,7 +57,7 @@ def edit_task(request, id):
             edit_task = CreateTaskForm()
             return render(request, "sales/edit_task.html", {"edit_task": edit_task})
     except Task.DoesNotExist:
-        return HttpResponseNotFound("<h2>Person not found</h2>")
+        return HttpResponseNotFound("<h2>Task not found</h2>")
     
 
 def delete_task(request, id):
@@ -66,4 +66,4 @@ def delete_task(request, id):
         task.delete()
         return HttpResponseRedirect("/")
     except Task.DoesNotExist:
-        return HttpResponseNotFound("<h2>Person not found</h2>")
+        return HttpResponseNotFound("<h2>Task not found</h2>")

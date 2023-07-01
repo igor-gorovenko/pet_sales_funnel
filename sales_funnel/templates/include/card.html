@@ -1,8 +1,9 @@
 <div class="card" style="width: 18rem;">
     <div class="card-body">
-        <h5 class="card-title">{{ task.title }}</h5>
-        <p>{{ task.status }}</p>
-        <p class="card-text">{{ task.text }}</p>
+        <h5 class="card-title">Title: {{ task.title }}</h5>
+        <p>Status: {{ task.status }}</p>
+        <p class="card-text">Text: {{ task.text }}</p>
+        <p>User: {{ task.user }}</p>
         <div>
             <a href="{{ task.get_url }}">view</a>
             <a href="{% url 'edit_task' task.id %}">edit</a>

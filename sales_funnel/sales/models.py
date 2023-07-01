@@ -14,6 +14,7 @@ class Task(models.Model):
     title = models.CharField(max_length=120)
     text = models.TextField()
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
 
     def get_url(self):
