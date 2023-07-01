@@ -1,7 +1,7 @@
 from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from .models import Task, User, Status
-from .forms import CreateTaskForm
+from .forms import CreateTaskFormUser, CreateTaskFormAdmin
 
 DEFAULT_STATUS_ID = 1
 
@@ -44,7 +44,7 @@ def add_task(request):
         new_task.save()
         return HttpResponseRedirect("/")
     else:
-        add_task = CreateTaskForm()
+        add_task = CreateTaskFormUser()
         context = {
             'add_task': add_task,
         }
@@ -54,15 +54,21 @@ def add_task(request):
 def edit_task(request, id):
     try:
         task = Task.objects.get(id=id)
-
+        
         if request.method == "POST":
             task.title = request.POST.get("title")
             task.text = request.POST.get('text')
+            if request.user.is_staff == True:
+                task.status = Status.objects.get(id=request.POST.get('status'))
             task.save()
             return HttpResponseRedirect("/")
         else:
-            edit_task = CreateTaskForm()
-            return render(request, "sales/edit_task.html", {"edit_task": edit_task})
+            if request.user.is_staff == True:
+                edit_task = CreateTaskFormAdmin()
+                return render(request, "sales/edit_task.html", {"edit_task": edit_task})
+            else:
+                edit_task = CreateTaskFormUser()
+                return render(request, "sales/edit_task.html", {"edit_task": edit_task})
     except Task.DoesNotExist:
         return HttpResponseNotFound("<h2>Task not found</h2>")
     
