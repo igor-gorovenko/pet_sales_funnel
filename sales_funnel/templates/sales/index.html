@@ -47,7 +47,12 @@
 </div>
 {% else %}
 <div class='container p-3'>
-    <h1>Please log in</h1>
+    <div>
+        <h1>To see tasks</h1>
+    </div>
+    <div>
+        <p>Please <a href="{% url 'login' %}">Log in</a> or <a href="{% url 'register' %}">Sign up</a></p>
+    </div>
 </div>
 {% endif %}
 {% endblock %}

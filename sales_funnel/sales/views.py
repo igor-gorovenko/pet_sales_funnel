@@ -7,9 +7,15 @@ DEFAULT_STATUS_ID = 1
 
 def index(request):
     tasks_list = Task.objects.all()
-    status_new = Task.objects.filter(status_id=1).filter(user_id=request.user.id)
-    status_open = Task.objects.filter(status_id=2).filter(user_id=request.user.id)
-    status_close = Task.objects.filter(status_id=3).filter(user_id=request.user.id)
+
+    if request.user.is_staff == True:
+        status_new = Task.objects.filter(status_id=1)
+        status_open = Task.objects.filter(status_id=2)
+        status_close = Task.objects.filter(status_id=3)
+    else:
+        status_new = Task.objects.filter(status_id=1).filter(user_id=request.user.id)
+        status_open = Task.objects.filter(status_id=2).filter(user_id=request.user.id)
+        status_close = Task.objects.filter(status_id=3).filter(user_id=request.user.id)
     context = {
         'tasks_list': tasks_list,
         'status_new': status_new,
@@ -21,6 +27,7 @@ def index(request):
 
 def get_task(request, id):
     task = get_object_or_404(Task, pk=id)
+    
     context = {
         'task': task,
     }
