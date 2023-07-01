@@ -6,6 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
+            {% if request.user.is_authenticated %}
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}">All</a>
@@ -14,6 +15,7 @@
                     <a class="nav-link" href="{% url 'add_task' %}">Create new</a>
                 </li>
             </ul>
+            {% endif %}
         </div>
         <div class="navbar-text">
             {% if request.user.is_authenticated %}
