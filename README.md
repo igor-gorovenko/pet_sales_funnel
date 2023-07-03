@@ -1,5 +1,11 @@
 # pet_sales_funnel
 
+Нужно создать пользователя
+Можем использовать данные
+Имя user1
+Пароль adfDsk231
+Почта необязательна
+
 Загружаем статусы
 
 python manage.py loaddata <path file>
