@@ -1,13 +1,16 @@
-<div class="card" style="width: 18rem;">
+<div class="card">
     <div class="card-body">
-        <h5 class="card-title">Title: {{ task.title }}</h5>
-        <p>Status: {{ task.status }}</p>
-        <p class="card-text">Text: {{ task.text }}</p>
-        <p>User: {{ task.user }}</p>
-        <div>
-            <a href="{% url 'detail_task' task.id %}">view</a>
-            <a href="{% url 'update_task' task.id %}">edit</a>
-            <a href="{% url 'delete_task' task.id %}">delete</a>
-        </div>
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text">{{ task.text }}</p>
     </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <span class="badge bg-dark">{{ task.status }}</span> / <span>{{ task.user}}</span>
+        </li>
+        <li class="list-group-item">
+            <a class="btn btn-light" href="{% url 'detail_task' task.id %}">view</a>
+            <a class="btn btn-primary" href="{% url 'update_task' task.id %}">edit</a>
+            <a class="btn btn-danger" href="{% url 'delete_task' task.id %}">delete</a>
+        </li>
+    </ul>
 </div>

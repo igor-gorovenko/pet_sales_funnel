@@ -5,43 +5,41 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 <div class='container p-3'>
-    <h1>All Tasks</h1>
-    <div class="row">
-        <div class="col-4 bg-light">
+    <div class="p-3">
+        <h1>All Tasks</h1>
+    </div>
+    <div class="row p-3">
+        <div class="col-4">
             <p>NEW</p>
-            <div>
-                {% if status_new %}
-                {% for task in status_new %}
-
+            {% if status_new %}
+            {% for task in status_new %}
+            <div class="p-3 bg-light">
                 {% include 'include/card.html' %}
-
-                {% endfor %}
-                {% endif %}
             </div>
+            {% endfor %}
+            {% endif %}
         </div>
-        <div class="col-4 bg-light">
+
+        <div class="col-4">
             <p>OPEN</p>
-            <div>
-                {% if status_open %}
-                {% for task in status_open %}
-
+            {% if status_open %}
+            {% for task in status_open %}
+            <div class="p-3 bg-light">
                 {% include 'include/card.html' %}
-
-                {% endfor %}
-                {% endif %}
             </div>
+            {% endfor %}
+            {% endif %}
         </div>
-        <div class="col-4 bg-light">
+
+        <div class="col-4">
             <p>CLOSE</p>
-            <div>
-                {% if status_close %}
-                {% for task in status_close %}
-
+            {% if status_close %}
+            {% for task in status_close %}
+            <div class="p-3 bg-light">
                 {% include 'include/card.html' %}
-
-                {% endfor %}
-                {% endif %}
             </div>
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 </div>
