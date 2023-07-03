@@ -16,9 +16,5 @@ class Task(models.Model):
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
-
-    def get_url(self):
-        return reverse('task', args=[self.id])
-    
     def __str__(self) -> str:
         return self.title

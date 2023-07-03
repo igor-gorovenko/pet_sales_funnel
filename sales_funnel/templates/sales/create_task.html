@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail task{% endblock %}
+
+{% block content %}
+
+<div class="container p-3">
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Create task</h2>
+        <p>
+            <label>Title</label>
+            <input name="title">
+        </p>
+        <p>
+            <label>Text</label>
+            <input name="text">
+        </p>
+        {% if user.is_superuser %}
+        <p>
+            <label>Status</label>
+            <select name="status" id="status">
+                {% for status in status_list %}
+                <option value="{{ status.id }}">{{ status.id }}. {{ status.title }} </option>
+                {% endfor %}
+            </select>
+        </p>
+        {% endif %}
+        <input type="submit" value="Save" />
+    </form>
+</div>
+
+{% endblock %}

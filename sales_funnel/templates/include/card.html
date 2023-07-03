@@ -5,8 +5,8 @@
         <p class="card-text">Text: {{ task.text }}</p>
         <p>User: {{ task.user }}</p>
         <div>
-            <a href="{{ task.get_url }}">view</a>
-            <a href="{% url 'edit_task' task.id %}">edit</a>
+            <a href="{% url 'detail_task' task.id %}">view</a>
+            <a href="{% url 'update_task' task.id %}">edit</a>
             <a href="{% url 'delete_task' task.id %}">delete</a>
         </div>
     </div>
