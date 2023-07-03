@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # local
     'sales',
     'user_auth',
+    'django_seed',
 ]
 
 MIDDLEWARE = [

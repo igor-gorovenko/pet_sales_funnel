@@ -1,0 +1,23 @@
+[
+    {
+        "model": "sales.status",
+        "pk": 1,
+        "fields": {
+            "title": "new"
+        }
+    },
+    {
+        "model": "sales.status",
+        "pk": 2,
+        "fields": {
+            "title": "open"
+        }
+    },
+    {
+        "model": "sales.status",
+        "pk": 3,
+        "fields": {
+            "title": "close"
+        }
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "model": "sales.task",
+        "pk": 1,
+        "fields": {
+            "title": "add new filled",
+            "text": "first and second name",
+            "status": 1,
+            "user": 1
+        }
+    },
+    {
+        "model": "sales.task",
+        "pk": 2,
+        "fields": {
+            "title": "Learn Code",
+            "text": "Python",
+            "status": 2,
+            "user": 2
+        }
+    },
+    {
+        "model": "sales.task",
+        "pk": 3,
+        "fields": {
+            "title": "go to shop",
+            "text": "go shop",
+            "status": 3,
+            "user": 3
+        }
+    },
+    {
+        "model": "sales.task",
+        "pk": 4,
+        "fields": {
+            "title": "create new form",
+            "text": "upd position",
+            "status": 1,
+            "user": 1
+        }
+    }
+]
