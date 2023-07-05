@@ -1,6 +1,6 @@
 # pet_sales_funnel
 
-<img width="984" alt="Screenshot 2023-07-05 at 15 56 41" src="https://github.com/igor-gorovenko/pet_sales_funnel/assets/59226858/8d35293e-f056-40b0-b3b6-bb2d38511b05">
+<img width="993" alt="Screenshot 2023-07-05 at 16 26 20" src="https://github.com/igor-gorovenko/pet_sales_funnel/assets/59226858/283bede5-22f7-44e9-8717-da327cab30a3">
 
 превью проекта
 
